@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_1097530_split_wi.groups" name="x_1097530_split_wi.groups">239ca93597c931106699b5a6f053af8e</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-09-03 19:43:43</sys_created_on>
+        <sys_id>5abc613597c931106699b5a6f053afb5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>239ca93597c931106699b5a6f053af8e</sys_name>
+        <sys_package display_value="Split-wise" source="x_1097530_split_wi">7ff83888970d31106699b5a6f053af49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Split-wise">7ff83888970d31106699b5a6f053af49</sys_scope>
+        <sys_update_name>sys_embedded_help_role_5abc613597c931106699b5a6f053afb5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-09-03 19:43:43</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

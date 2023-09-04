@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="72bd7048974171106699b5a6f053af16" label="Expense" max_length="40" name="x_1097530_split_wi_expense" type="collection">
+        <element label="Cost" max_length="40" name="cost" type="float"/>
+        <element label="Giver" max_length="32" name="giver" reference="sys_user" type="reference"/>
+        <element label="group" max_length="32" name="group" reference="x_1097530_split_wi_group" type="reference"/>
+        <element choice="2" choice_table="sys_user" dependent="group.members" dependent_on_field="group.members" label="Receivers" max_length="4000" name="receivers" reference="sys_user" reference_qual="javascript: new x_1097530_split_wi.getMembers().getMemberUsers(); " type="glide_list" use_dependent_field="true" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="giver"/>
+        </index>
+        <index name="index2">
+            <element name="group"/>
+        </index>
+    </element>
+</database>

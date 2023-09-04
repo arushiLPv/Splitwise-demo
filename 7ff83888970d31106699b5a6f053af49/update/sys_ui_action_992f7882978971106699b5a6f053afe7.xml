@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name/>
+        <active>true</active>
+        <client>false</client>
+        <client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+        <comments/>
+        <condition/>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>true</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <format_for_configurable_workspace>false</format_for_configurable_workspace>
+        <hint/>
+        <isolate_script>false</isolate_script>
+        <list_action>true</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>true</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Calculate share</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[var expenses = new GlideRecord('x_1097530_split_wi_splitwise_expenses');
+gs.info("Hiiiiii sss" + expenses.giver);
+expenses.addQuery('giver', '=', gs.getUserName());
+gs.info("hello hii");
+
+expenses.query();
+gs.info("Query calleddd");
+
+do {
+    gs.info("inside loop");
+
+    var phone = new GlideRecord('x_1097530_split_wi_splitwise_transactions');
+    gs.info("record created");
+
+    phone.initialize();
+    phone.giver = current.giver;
+    gs.info("giver value is" + phone.giver);
+
+    if (current.receiver.includes(',')) {
+        const receivers = current.receiver.split(",");
+        const expenseSquadSize = receivers.length;
+        for (let i = 0; i < expenseSquadSize; i++) {
+
+            var transaction = new GlideRecord('x_1097530_split_wi_splitwise_transactions');
+            //             transaction.initialize();
+            transaction.addEncodedQuery(`giver=${receivers[i]}^receiver=${current.giver}`);
+            transaction.query();
+			var transaction3 = new GlideRecord('x_1097530_split_wi_splitwise_transactions');
+            //             transaction.initialize();
+            transaction3.addEncodedQuery(`giver=${current.giver}^receiver=${receivers[i]}`);
+            transaction3.query();
+            if (transaction.next()) {
+                gs.info("KKKKK");
+                let akk = transaction.getValue('amount');
+                let cvv = current.cost / expenseSquadSize;
+                let amount = 0;
+                do {
+                    amount += (current.cost / expenseSquadSize) - transaction.getValue('amount');
+                    transaction.amount = amount;
+                    transaction.update();
+                } while (transaction.next());
+
+            } 
+			else if(transaction3.next())
+				{
+					let amount = 0;
+                do {
+                    amount += (current.cost / expenseSquadSize) + +transaction3.getValue('amount');
+                    transaction3.amount = amount;
+                    transaction3.update();
+                } while (transaction3.next());
+				}
+			else {
+                const ab = receivers[i];
+                phone.receiver = receivers[i];
+                phone.amount = current.cost / expenseSquadSize;
+                phone.group = current.group;
+                phone.insert();
+            }
+        }
+
+    } else {
+
+        var transaction1 = new GlideRecord('x_1097530_split_wi_splitwise_transactions');
+        //         transaction1.initialize();
+        transaction1.addEncodedQuery(`giver=${current.receiver}^receiver=${current.giver}`);
+        transaction1.query();
+		var transaction4 = new GlideRecord('x_1097530_split_wi_splitwise_transactions');
+            //             transaction.initialize();
+            transaction4.addEncodedQuery(`giver=${current.giver}^receiver=${current.receiver}`);
+            transaction4.query();
+        if (transaction1.next()) {
+			let amount=0;
+            do {
+                amount += (current.cost) - transaction1.getValue('amount');
+				transaction1.amount=amount;
+                transaction1.update();
+            } while (transaction1.next());
+        } 
+		else if(transaction4.next())
+				{
+					let amount = 0;
+                do {
+                    amount += (current.cost ) + +transaction4.getValue('amount');
+                    transaction4.amount = amount;
+                    transaction4.update();
+                } while (transaction4.next());
+				}
+		else {
+            phone.receiver = current.receiver;
+            phone.amount = current.cost;
+            phone.group = current.group;
+            phone.insert();
+        }
+
+    }
+} while (expenses.next());]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-09-04 11:04:04</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>992f7882978971106699b5a6f053afe7</sys_id>
+        <sys_mod_count>40</sys_mod_count>
+        <sys_name>Calculate share</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Split-wise" source="x_1097530_split_wi">7ff83888970d31106699b5a6f053af49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Split-wise">7ff83888970d31106699b5a6f053af49</sys_scope>
+        <sys_update_name>sys_ui_action_992f7882978971106699b5a6f053afe7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-09-04 22:49:02</sys_updated_on>
+        <table>x_1097530_split_wi_splitwise_expenses</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

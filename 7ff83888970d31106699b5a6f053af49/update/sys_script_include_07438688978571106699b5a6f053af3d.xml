@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1097530_split_wi.getMembers</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>getMembers</name>
+        <script><![CDATA[var getMembers = Class.create();
+
+getMembers.prototype = {
+    initialize: function() {},
+
+    getMemberUsers: function() {
+        var usersList = [];
+        var groupMembers = current.group.members.toString();
+        var grUser = new GlideRecord('sys_user');
+
+        // grUser.addQuery('company', gs.getUser().getCompanyID());
+        //  grUser.addQuery('department', gs.getUser().getDepartmentID());
+        //  grUser.query();
+
+        // while(grUser.next()) {
+        //  usersList.push(grUser.getUniqueValue());
+        //  }
+        gs.info("JJJJJJJJJJJJJJJ"+ groupMembers);
+//         gs.info("JJJJJJJJJJJJJJJ"+ groupMembers.split(","));
+
+        return 'sys_idIN'+ groupMembers;
+        // 	'sys_idIN' + usersList;
+
+    },
+    type: 'getMembers'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-29 10:55:17</sys_created_on>
+        <sys_id>07438688978571106699b5a6f053af3d</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>getMembers</sys_name>
+        <sys_package display_value="Split-wise" source="x_1097530_split_wi">7ff83888970d31106699b5a6f053af49</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Split-wise">7ff83888970d31106699b5a6f053af49</sys_scope>
+        <sys_update_name>sys_script_include_07438688978571106699b5a6f053af3d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-09-03 20:43:44</sys_updated_on>
+    </sys_script_include>
+</record_update>

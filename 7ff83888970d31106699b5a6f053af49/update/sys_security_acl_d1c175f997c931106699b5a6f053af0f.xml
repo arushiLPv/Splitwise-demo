@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <condition/>
+        <description>Role that can grant user to see the groups he's part of</description>
+        <local_or_existing>Local</local_or_existing>
+        <name>x_1097530_split_wi_splitwise_groups.*</name>
+        <operation display_value="read">read</operation>
+        <script><![CDATA[var groupMembers = current.members.toString();
+gs.info(groupMembers+"ppppppppppp");
+gs.info(groupMembers.includes(gs.getUserID())+"jjjjjjjjjjj");
+
+if (groupMembers.includes(gs.getUserID())) {
+  answer = true;
+}
+else{
+  answer = false;
+}]]></script>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-09-03 20:08:36</sys_created_on>
+        <sys_id>d1c175f997c931106699b5a6f053af0f</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>x_1097530_split_wi_splitwise_groups.*</sys_name>
+        <sys_package display_value="Split-wise" source="x_1097530_split_wi">7ff83888970d31106699b5a6f053af49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Split-wise">7ff83888970d31106699b5a6f053af49</sys_scope>
+        <sys_update_name>sys_security_acl_d1c175f997c931106699b5a6f053af0f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-09-03 20:56:46</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

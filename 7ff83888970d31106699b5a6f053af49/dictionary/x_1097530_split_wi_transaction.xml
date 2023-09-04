@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="8b6deedc9789b1106699b5a6f053afd2" label="Transaction" max_length="40" name="x_1097530_split_wi_transaction" type="collection">
+        <element label="Amount" max_length="40" name="amount" type="float"/>
+        <element label="Giver" max_length="32" name="giver" reference="sys_user" type="reference"/>
+        <element label="Group" max_length="32" name="group" reference="x_1097530_split_wi_group" type="reference"/>
+        <element label="Receiver" max_length="32" name="receiver" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="giver"/>
+        </index>
+        <index name="index2">
+            <element name="group"/>
+        </index>
+        <index name="index3">
+            <element name="receiver"/>
+        </index>
+    </element>
+</database>

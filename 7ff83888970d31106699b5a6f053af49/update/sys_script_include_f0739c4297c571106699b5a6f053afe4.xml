@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1097530_split_wi.GiversList</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>GiversList</name>
+        <script><![CDATA[var GiversList = Class.create();
+GiversList.prototype = {
+    initialize: function() {
+    },
+	giversListUsers: function() {
+        var usersList = [];
+        var groupMembers = current.group.members.toString();
+        var grUser = new GlideRecord('sys_user');
+//         gs.info("JJJJJJJJJJJJJJJ"+ groupMembers);
+        return 'sys_idIN'+ groupMembers;
+    },
+
+    type: 'GiversList'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-09-04 07:56:00</sys_created_on>
+        <sys_id>f0739c4297c571106699b5a6f053afe4</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>GiversList</sys_name>
+        <sys_package display_value="Split-wise" source="x_1097530_split_wi">7ff83888970d31106699b5a6f053af49</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Split-wise">7ff83888970d31106699b5a6f053af49</sys_scope>
+        <sys_update_name>sys_script_include_f0739c4297c571106699b5a6f053afe4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-09-04 18:31:24</sys_updated_on>
+    </sys_script_include>
+</record_update>

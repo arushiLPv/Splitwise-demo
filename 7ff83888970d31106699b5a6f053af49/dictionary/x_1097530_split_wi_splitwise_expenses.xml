@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="cf287779978d31106699b5a6f053afc0" label="Splitwise Expenses" max_length="40" name="x_1097530_split_wi_splitwise_expenses" type="collection">
+        <element label="Cost" max_length="40" name="cost" type="float"/>
+        <element label="Giver" max_length="32" name="giver" reference="sys_user" reference_qual="javascript: new  x_1097530_split_wi.GiversList().giversListUsers(); " type="reference" use_reference_qualifier="advanced"/>
+        <element label="Group" max_length="32" name="group" reference="x_1097530_split_wi_splitwise_groups" type="reference"/>
+        <element label="Receiver" max_length="4000" name="receiver" reference="sys_user" reference_qual="javascript: new x_1097530_split_wi.getMembers().getMemberUsers(); " type="glide_list" use_reference_qualifier="advanced"/>
+        <index name="index">
+            <element name="giver"/>
+        </index>
+        <index name="index2">
+            <element name="group"/>
+        </index>
+    </element>
+</database>
